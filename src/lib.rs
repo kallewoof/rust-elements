@@ -29,8 +29,10 @@ extern crate bech32;
 extern crate bitcoin;
 extern crate bitcoin_hashes;
 extern crate secp256k1;
+extern crate slip21;
 #[cfg(feature = "serde")] extern crate serde;
 
+#[cfg(test)] extern crate hex;
 #[cfg(test)] extern crate rand;
 #[cfg(test)] extern crate serde_json;
 
@@ -40,6 +42,7 @@ pub mod blech32;
 mod block;
 pub mod confidential;
 mod transaction;
+pub mod slip77;
 
 // export everything at the top level so it can be used as `elements::Transaction` etc.
 pub use address::{Address, AddressParams, AddressError};

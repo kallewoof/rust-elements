@@ -603,6 +603,11 @@ impl Transaction {
         self.consensus_encode(&mut enc).unwrap();
         bitcoin::Wtxid::from_engine(enc)
     }
+
+    /// Get the total transaction fee.
+    pub fn fee(&self) -> u64 {
+        self.output.iter().filter(|o| o.is_fee()).map(|o| o.value.unwrap_explicit()).sum()
+    }
 }
 
 //TODO(stevenroose) remove this, it's incorrect
